@@ -1,0 +1,43 @@
+<html>
+   <head>
+      <title>VueJs Introduction</title>
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+   </head>
+   <body>
+   <div id="AttributeBinding">
+  <ul>
+  <h1> All Tasks </h1>
+	<!--<li v-for="task in tasks">{{task}}</li> !-->
+	<li v-for="task in tasks">{{task.Description}}</li>
+  </ul>
+  
+  <!-- v-if directive -->
+  
+    <h1> Completed Tasks </h1>
+	<!--<li v-for="task in tasks">{{task}}</li> !-->
+	<li v-for="task in tasks" v-if="task.Completed">{{task.Description}}</li>
+  </ul>
+  
+  <h1> InCompleted Tasks </h1>
+	<!--<li v-for="task in tasks">{{task}}</li> !-->
+	<li v-for="task in tasks" v-if="!task.Completed">{{task.Description}}</li>
+  </ul>
+  
+   </div>
+   <script>
+   var newObj = new Vue({
+   el: "#AttributeBinding",
+   data : {
+		tasks : [
+		{Description: "Go to Gym", Completed : false},
+		{Description: "Go to Market", Completed : false},
+		{Description: "Go to Mall", Completed : true},
+		{Description: "Go to Flipkart", Completed : false},
+		{Description: "Go to Office", Completed : true},
+		]
+   }
+
+   });
+   </script>
+   </body>
+</html>

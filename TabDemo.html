@@ -1,0 +1,101 @@
+<html>
+<head>
+	<title>VueJs Introduction</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" type="text/css">
+
+<style>
+	.container
+	{
+		margin-top : 40px;
+	}
+</style>
+</head>
+<body>
+<div id="root" class="container">
+  <tabs>
+    <tab name="About Us" :selected="true">
+      <h1>This part is about us
+      </h1>
+    </tab>
+    <tab name="About our culture">
+      <h1>This part is about our culture
+      </h1>
+    </tab>
+    <tab name="About our vision">
+      <h1>This part is about our vision
+      </h1>
+    </tab>
+  </tabs>
+</div>
+
+<script>
+
+Vue.component('tabs', {
+  template: `
+  <div>
+    <div class="tabs">
+      <ul>
+        <li v-for="tab in tabs" v-bind:class="{'is-active': tab.isActive}">
+          <a @click="selectTab(tab)">
+            {{ tab.name }}
+          </a>
+         </li>
+      </ul>
+    </div>
+    <div class="tab-details">
+      <slot></slot>
+    </div>
+  </div>
+`,
+  data() {
+    return {
+      tabs: [],
+    }
+  },
+  created() {
+    this.tabs = this.$children;
+  },
+  methods: {
+    selectTab(selectedTab) {
+     this.tabs.forEach(
+      function(tab){
+        tab.isActive = (selectedTab.name == tab.name)
+      }
+     ) 
+    }
+  }
+});
+
+Vue.component('tab', {
+  template: `
+    <div v-show="isActive">
+      <slot>
+      </slot>
+    </div>
+`,
+  props: {
+    name: {
+      required: true,
+    },
+    selected: {
+      default: false
+    }
+  },
+  data() {
+    return {
+      isActive: false
+    }
+  },
+  mounted() {
+    this.isActive = this.selected;
+  }
+});
+  
+
+new Vue({
+  el: "#root",
+})
+</script>
+</body>
+</html>

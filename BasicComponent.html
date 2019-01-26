@@ -1,0 +1,57 @@
+<html>
+<head>
+	<title>VueJs Introduction</title>
+	<script src="vue.js"></script>
+<!--	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" type="text/css">
+
+	<style>
+		.container
+		{
+			margin-top : 40px;
+		}
+	</style>
+</head>
+<body>
+<div id="BasicComponent" class="container">
+
+<message title="Hello Vue" body = "why are you awesome?"></message>
+<message title = "Something" body = "hfohsidfd"></message>
+</div>
+
+<script>
+
+Vue.component('message',{
+	props : ['title','body'],	
+	data(){
+	return {
+		status:true
+	};
+	},
+	template : `
+	<article class="message" v-show="status">
+		<div class="message-header">
+			<p>{{title}}</p>
+			<button @click="hideit">X</button>
+		</div>
+		<div class="message-body">
+			{{body}}
+		</div>
+	</article>`,
+  methods : {
+   hideit()
+   {
+	this.status = false
+   }
+   }
+	
+});
+
+
+ 
+var newObj = new Vue({
+el: "#BasicComponent"
+});
+</script>
+</body>
+</html>

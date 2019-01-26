@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Difference between Computed Property and Methods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="vue_det">
+        <h1>Methods Call</h1>
+        <h2>{{GenerateRandom()}}</h2>
+        <h2>{{GenerateRandom()}}</h2>
+        <h2>{{GenerateRandom()}}</h2>
+
+        <h1>Computed Property Call</h1>
+        <h2>{{GenerateRandomNumber}}</h2>
+        <h2>{{GenerateRandomNumber}}</h2>
+        <h2>{{GenerateRandomNumber}}</h2>
+    </div>
+  
+    <script>
+        var vm = new Vue({
+            el: '#vue_det',
+            data: {
+               
+            },
+            methods:{
+                GenerateRandom()
+                {
+                    return Math.random();
+                }
+            },
+            computed: {
+                GenerateRandomNumber()
+                {
+                    return Math.random();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

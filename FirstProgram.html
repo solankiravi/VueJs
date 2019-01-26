@@ -1,0 +1,88 @@
+<html>
+   <head>
+      <title>VueJs Introduction</title>
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+   </head>
+   <body>
+       <!--<img src="Images/Lighthouse.jpg" />-->
+	   
+      <div id="intro">
+	
+	 <h2> {{FirstName}}</h2>
+	 <h2>{{LastName}} </h2>     
+	 <div v-html = "htmlcontent"> </div>
+
+<!-- Calling a method !-->  
+	 
+	
+	 <h2>{{myMethod()}}</h2>  
+	 
+	  
+<!-- binding an image src !-->  
+
+	 
+     <img v-bind:src ="imgsrc" width="550" height="300">
+	 <br/>
+	
+	 
+<!-- iterating a list !-->
+	
+	<ul>
+		<li v-for="name in names">{{name}} </li>
+	  
+	</ul>
+	  
+<!-- Data Binding !-->
+		  
+	    <input type ="text" id="appendName" v-model="newName">
+		
+		
+
+<!-- Event Management !-->  
+
+	  <button id="button" v-on:click="addName">Append Long form</button>
+	  <!-- <button id="button" v-on:keyup="addName">Append Keyup </button>!-->
+	   <button id="button" @click="addName">Append Short Form</button>
+	   <br/> <br/>
+
+	  
+<!-- Two way Data Binding !-->   
+
+	    
+	  <textarea v-model = "message"></textarea>
+	  <p>Entered Text = {{message}} </p>
+
+	  </div>
+	  <script>
+	  	  
+	  var newObj = new Vue({
+	  el: "#intro",
+	  data: {
+	  newName : "",
+		FirstName : "Ravi",
+		LastName : "Solanki",
+		names : ['Ravi','Vikash','sachin'],
+		message : "",
+		htmlcontent: "<div><h3>Hello World</h3></div>",
+        imgsrc : "Images/Lighthouse.jpg"
+	  },
+	  methods : 
+	  {
+		myMethod: function()
+		{
+			//return "MY name is {0} {1}",FirstName,LastName;
+				return "MY name is "+ this.FirstName +" "+this.LastName;
+		},
+		
+		addName() //es16 style
+		{
+			this.names.push(this.newName);
+			this.newName = '';
+		}
+	  }
+	  });
+	  
+
+	  </script>
+   </body>
+</html>

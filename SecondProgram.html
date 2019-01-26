@@ -1,0 +1,60 @@
+<html>
+   <head>
+      <title>VueJs Introduction</title>
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	  <style>
+	  .color-red
+	  {
+		color : red;
+	  }
+	  
+	  .btn-red
+	  {
+		background-color: red;
+	  }
+	  </style>
+   </head>
+   <body>
+   <div id="AttributeBinding1">
+   
+<!-- Class Binding !-->  
+    
+   
+   <h1 :class="RedText">{{h1Text}}</h1>
+   
+   
+   
+   <button :class="{'btn-red' : isloading}" @click="ChangeBackground">Click Me</button>
+ 
+   
+<!-- Expressions !-->     
+
+    
+  <h2 v-text="new Date()"></h2>
+  
+   
+ 
+  <h3>
+  {{message.split('').reverse().join('')}}
+  </h3>
+ 
+   </div>
+   <script>
+   var newObj = new Vue({
+   el: "#AttributeBinding",
+   data : {
+		h1Text : "Say Hello",
+		RedText : 'color-red',
+		isloading : false,
+		message : "Hello World"
+   },
+   methods : {
+   ChangeBackground()
+   {
+	this.isloading = true;
+   }
+   }
+   });
+   </script>
+   </body>
+</html>

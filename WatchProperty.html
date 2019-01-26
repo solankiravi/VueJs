@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Difference between Computed Property and Methods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="vue_det">
+       
+       USD : <input type="text" text="{{usd}}" v-model="usd">
+       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+       Ruppes : <input type="text" text="{{Rupee}}" v-model="Rupee">
+  
+    </div>
+  
+    <script>
+        var vm = new Vue({
+            el: '#vue_det',
+            data: {
+               Rupee : 0,
+               usd : 0
+            },
+            watch : {
+                Rupee(val)
+                {
+                    this.Rupee = val;
+                    this.usd = val / 69;
+                },
+                usd(val)
+                {
+                    this.usd = val;
+                    this.Rupee = val * 69;
+                }
+            }
+           
+        });
+    </script>
+</body>
+</html>

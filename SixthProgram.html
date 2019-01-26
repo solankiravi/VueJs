@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>VueJs Introduction</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="ComponentModelDemo">
+    <task></task>
+<task>Go to store</task>
+<task>Go to Mall</task>
+<task>Go to store</task>
+<task>Go to Office</task>
+
+</div>
+
+<task><task>
+<script>
+
+Vue.component('task',{
+	template : "<li> Go to Office </li>"
+});
+
+
+Vue.component('task',{
+	template : "<li><slot><slot></li>"
+});
+
+
+ 
+var newObj = new Vue({
+el: "#ComponentModelDemo",
+});
+</script>
+</body>
+</html>

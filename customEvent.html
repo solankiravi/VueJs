@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>VueJs Introduction</title>
+	<script src="vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" type="text/css">
+
+<style>
+	.container
+	{
+		margin-top : 40px;
+	}
+</style>
+</head>
+<body>
+<div id="BasicComponent" class="container">
+
+<modal v-if="showModal" @close="showModal=false" text="This is a sample modal"></modal>
+
+<button @click="showModal=true" class="modalStyle">Show Modal</button>
+
+</div>
+
+<script>
+
+Vue.component('modal',{
+props : ['text'],
+template : `
+
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content">   
+	<div class="box">
+	<p>{{text}}</p>	 
+	</div>	
+  </div>    
+       <button class="modal-close" @click="$emit('close')"></button>   
+</div>`,
+});
+
+
+var newObj = new Vue({
+el: "#BasicComponent",
+data : {
+showModal : false
+}
+});
+
+</script>
+</body>
+</html>
